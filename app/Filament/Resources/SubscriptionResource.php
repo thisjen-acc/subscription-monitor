@@ -26,6 +26,11 @@ class SubscriptionResource extends Resource
                 Forms\Components\TextInput::make('client_name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('client_emails')
+                    ->label('Client Email(s)')
+                    ->placeholder('client1@example.com, client2@example.com')
+                    ->helperText('Separate multiple emails with commas')
+                    ->rows(2),
                 Forms\Components\TextInput::make('subscription_name')
                     ->required()
                     ->maxLength(255),
@@ -34,6 +39,9 @@ class SubscriptionResource extends Resource
                     ->numeric()
                     ->default(1),
                 Forms\Components\TextInput::make('po_number')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('kit_number')
+                    ->label('Kit Number')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('monthly_cost')
                     ->required()
@@ -58,6 +66,8 @@ class SubscriptionResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('po_number')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('kit_number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('monthly_cost')
                     ->numeric()
